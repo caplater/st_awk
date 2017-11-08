@@ -8,12 +8,12 @@ class st_awkCommand(sublime_plugin.TextCommand):
         Actually run awk command
         """
         r = sublime.Region(0, self.view.size())
-        content = self.view.substr(r).encode('utf-8')
+        content = self.view.substr(r)
 
         out = ''
         try:
             p = Popen(['awk', expr], stdout=PIPE, stdin=PIPE, stderr=PIPE)
-            out, err = p.communicate(input=content)
+            out, err = p.communicate(input=content
             if err != '':
                 sublime.error_message('Error when run awk: \n' + err)
                 return
