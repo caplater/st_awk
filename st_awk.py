@@ -8,7 +8,7 @@ class st_awkCommand(sublime_plugin.TextCommand):
         Actually run awk command
         """
         r = sublime.Region(0, self.view.size())
-        content = self.view.substr(r)
+        content = self.view.substr(r).encode('utf-8')
 
         out = ''
         try:
